@@ -1,2 +1,5 @@
 This was written for Pike 7.8; earlier versions may work, but are not
 supported.
+
+Install Pike (in Debian and Ubuntu, the package is `pike7.8`), then
+run the program, either with `pike main.pike` or `./main.pike`.
