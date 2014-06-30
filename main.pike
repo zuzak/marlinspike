@@ -17,7 +17,7 @@ int main(int argc, array(string) argv)
 		switch(option[0])
 		{
 			case "version":
-				write( .miscellany.get_version() );
+				write( "%s\n", .miscellany.get_version() );
 				return 1;
 			case "license":
 				.miscellany.output_license();
