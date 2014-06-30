@@ -11,7 +11,7 @@ class IRCBot {
 		*/
 		switch( msg->command ) {
 			case "001": // WELCOME
-				write(" done!\n%s\n", msg->body);
+				write(" connected!\n%s\n\n", msg->body);
 				break;
 			case "PRIVMSG":
 				handle_pm(msg->params[0], msg->prefix, msg->body, msg->raw);

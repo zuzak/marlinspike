@@ -8,7 +8,7 @@ class IRC {
 		server = s;
 		nick = n;
 		port = p;
-		write("Connecting to %s:%d as %s...\n", server, port, nick);
+		write("Connecting to %s...", server);
 		connect();
 		read();
 	}
@@ -17,11 +17,16 @@ class IRC {
 		array host = Protocols.DNS.client()->gethostbyname(server);
 		string curr;
 		foreach(host[1], string curr) { // loop through pool
-			write("Connecting to %s...", Protocols.DNS.client()->gethostbyaddr(curr)[0] );
+			array rdns = Protocols.DNS.client()->gethostbyaddr(curr);
+			if (rdns[0] != 0) {
+				write("\rConnecting to %s...", rdns[0] );
+			} else {
+				write("\nConnecting to %s (%s)...", server, curr);
+			}
 			if (!socket->connect(curr, port)) {
 				write(" failed (%s)\n", strerror(socket->errno()));
 			} else {
-				write(" almost there...");
+				write(" waiting for response...");
 				server = curr;
 				send(sprintf("USER %s 0 * :%s", nick, .miscellany.get_version() ));
 				send(sprintf("NICK %s\r", nick ));
