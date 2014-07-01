@@ -10,7 +10,8 @@ class IRC {
 		port = p;
 		write("Connecting to %s...", server);
 		connect();
-		read();
+		signal(signum("SIGINT"), on_sigint);
+		read(); // this won't return!
 	}
 
 	Stdio.File connect() {
@@ -124,5 +125,8 @@ class IRC {
 		send(sprintf("PRIVMSG %s :%s", to, msg));
 	}
 
-
+	void on_sigint(int sig) {
+		werror("\nSent quit command...\n");
+		send(sprintf("QUIT :Received %s", signame(sig)));
+	}
 }
