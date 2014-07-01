@@ -39,7 +39,7 @@ class IRC {
 			werror("Unable to connect.\n");
 			return 0;
 		} else {
-			socket.set_nonblocking();
+			//socket.set_nonblocking();
 		}
 	}
 
