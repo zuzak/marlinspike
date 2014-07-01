@@ -1,4 +1,5 @@
 import .IRC;
+import .User;
 class IRCBot {
 	inherit IRC;
 	/*
@@ -17,12 +18,22 @@ class IRCBot {
 			case "001": // WELCOME
 				write(" connected!\n%s\n\n", msg->body);
 				break;
-			case "NOTICE":
+			case "PING":
+				send(sprintf("PONG :%s", msg->body));
+				write(msg->raw);
+				break;
+			case "QUIT":
+				if(getNickFromHostmask(msg->prefix) == nick) {
+					werror("Client exited (%s)\n",msg->body);
+					exit(1);
+				}
+				break;
 			case "PRIVMSG":
 				.commands.handle_pm(this, msg->params[0], msg->prefix, msg->body, msg->raw);
-			default:
 				break;
-				write("%-.3s || %.73s\n",msg->command,msg->raw);
+			default:
+				//write("%-.3s || %.73s\n",msg->command,msg->raw);
+				break;
 		}
 	}
 }
