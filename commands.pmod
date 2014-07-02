@@ -16,7 +16,7 @@ void handle_pm(IRCBot bot, string to, string from, string body, string raw) {
 			break;
 		case "dns":
 		case "rdns":
-			bot.say(to, rdns(args[1]));
+			bot.say(to, dns(args[1]));
 			break;
 	}
 }
