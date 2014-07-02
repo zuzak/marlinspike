@@ -17,6 +17,7 @@ class IRCBot {
 		switch( msg->command ) {
 			case "001": // WELCOME
 				write(" connected!\n%s\n\n", msg->body);
+				signal(signum("SIGINT"), ::on_sigint);
 				break;
 			case "PING":
 				send(sprintf("PONG :%s", msg->body));

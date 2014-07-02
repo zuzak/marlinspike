@@ -10,7 +10,6 @@ class IRC {
 		port = p;
 		write("Connecting to %s...", server);
 		connect();
-		signal(signum("SIGINT"), on_sigint);
 		read(); // this won't return!
 	}
 
