@@ -16,7 +16,7 @@ class IRCBot {
 		*/
 		switch( msg->command ) {
 			case "001": // WELCOME
-				write(" connected!\n%s\n\n", msg->body);
+				write(" connected!\n%s\n", msg->body);
 				signal(signum("SIGINT"), ::on_sigint);
 				break;
 			case "PING":
