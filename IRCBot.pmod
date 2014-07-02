@@ -21,7 +21,6 @@ class IRCBot {
 				break;
 			case "PING":
 				send(sprintf("PONG :%s", msg->body));
-				write(msg->raw);
 				break;
 			case "QUIT":
 				if(getNickFromHostmask(msg->prefix) == nick) {

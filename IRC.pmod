@@ -69,6 +69,7 @@ class IRC {
 		if(datum[0] == ':') { // there is a prefix
 			prefixEnd = search(datum, " ");
 			message->prefix = datum[1..prefixEnd];
+			prefixEnd = prefixEnd + 1;
 		}
 		suffixStart = search(datum, " :");
 		if (suffixStart != 0) {
@@ -77,7 +78,6 @@ class IRC {
 			suffixStart = sizeof(datum);
 		}
 		//suffixStart = sizeof(datum) - suffixStart;
-		prefixEnd = prefixEnd + 1;
 		string|array params;
 		if (suffixStart != -1) {
 			params = datum[prefixEnd..suffixStart];
@@ -85,13 +85,6 @@ class IRC {
 			params = datum[prefixEnd..];
 		}
 		if ( params == "" ) {
-			write("-ø- |%s|\n",datum);
-			write("    `> Prefix end: %d; suffix start: %d", prefixEnd, suffixStart);
-			if ( prefixEnd > suffixStart ) {
-				write(" !!!\n");
-			} else {
-				write("\n");
-			}
 			return;
 		}
 		params = params / " ";
@@ -100,12 +93,7 @@ class IRC {
 		message->params = params[1];
 		message->raw = datum;
 
-		if ( message->command == "PING" ) {
-			// special case, do handling here
-			send("PONG :%s" + message->body);
-		} else {
-			process(message);
-		}
+		process(message);
 
 	}
 
