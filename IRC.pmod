@@ -46,7 +46,7 @@ class IRC {
 	int read() { // I don't like this
 		string buffer = "";
 		while(socket.is_open()) {
-			string curr = socket.read();
+			string curr = socket.read(1);
 			if ( curr != 0 ) {
 				buffer = buffer + curr;
 				array data = buffer / "\r\n";
