@@ -14,7 +14,7 @@ void handle_pm(IRCBot bot, string to, string from, string body, string raw) {
 		case "src":
 			bot.say(to,"https://github.com/zuzak/marlinspike");
 			break;
-		case "dns":
+		case "dns": /* falls through */
 		case "rdns":
 			bot.say(to, dns(args[1]));
 			break;
