@@ -6,6 +6,8 @@ class IRCBot {
 	int init(string s, int p, string n) {
 		::init(s, p, n);
 	}*/
+	int messageCount;
+	int connected;
 	void process(mapping msg) {
 		/* msg:
 			prefix - string
@@ -18,6 +20,7 @@ class IRCBot {
 			case "001": // WELCOME
 				write(" connected!\n%s\n", msg->body);
 				signal(signum("SIGINT"), ::on_sigint);
+				connected = 1;
 				break;
 			case "PING":
 				send(sprintf("PONG :%s", msg->body));
@@ -34,6 +37,10 @@ class IRCBot {
 			default:
 				//write("%-.3s || %.73s\n",msg->command,msg->raw);
 				break;
+		}
+		messageCount = messageCount + 1;
+		if (connected != 0) {
+			write("\rProcessed %3d messages", messageCount);
 		}
 	}
 }
