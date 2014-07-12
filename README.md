@@ -22,24 +22,24 @@ The `--version` and `--license` arguments will also work.
 ## Commands
 The following commands, when issued via IRC, cause the bot to react.
 
-The use of angle brackets `<>` denote required arguments.
-The use of square brackets `[]` denote optional arguments.
+* The use of angle brackets `<>` denote required arguments.
+* The use of square brackets `[]` denote optional arguments.
 
 ### Basic commands
 #### Ping
-*Usage:* `!ping`, `!botsnack`
+* *Usage:* `!ping`, `!botsnack`
 Cause the bot to respond with a simple message, to confirm that it's still alive.
 
 ### Source control
 #### Source
-*Usage:* `!src`
+* *Usage:* `!src`
 Cause the bot to respond with a link to its source code.
 #### Version
-*Usage:* `!version`
-*Aliases:* `!git`, `!commit`
+* *Usage:* `!version`
+* *Aliases:* `!git`, `!commit`
 Cause the bot to respond with, as appropriate, its version number, git commit hash, and a link to the repository.
 ### Network utilities
 #### DNS
-*Usage:* `!dns <hostname>`
-*Aliases:* `!rdns`
+* *Usage:* `!dns <hostname>`
+* *Aliases:* `!rdns`
 Cause the bot to look up DNS records and respond appropriately.
