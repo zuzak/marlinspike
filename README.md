@@ -3,7 +3,20 @@ An IRC bot written in [Pike](http://pike.lysator.liu.se/) 7.8.
 
 ## Usage
 To run: `pike main.pike` or `./main.pike`.
-The command line arguments `--version` and `--license` work.
+
+### Configuration
+Configuration is done via command line arguments or environment variables.
+
+| Argument                    | Variable | Default          |
+|-----------------------------|----------|------------------|
+|`--port`, `-p`               | `PORT`   | 6667             |
+|`--server`                   | `SERVER` | irc.freenode.net |
+|`--nick`, `-n`, `--nickname` | `NICK`   | Pikebot          |
+
+To decrease the likelihood of unconfigured bots colliding, a random number is
+appended to the default nickname.
+
+The `--version` and `--license` arguments will also work.
 
 ## Commands
 The following commands, when issued via IRC, cause the bot to react.
