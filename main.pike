@@ -6,12 +6,14 @@ int main(int argc, array(string) argv)
 	string server = "irc.freenode.net";
 	string nick = "Pikebot" + random(1000);
 	int port = 6667;
+	string channel;
 	foreach(find_all_options(argv, ({
 		({ "version", NO_ARG, ({ "-v", "--version" }) }),
 		({ "license", NO_ARG, ({ "--license", "--licence" }) }),
 		({ "server", HAS_ARG, "--server", "SERVER" }),
 		({ "port", HAS_ARG, ({ "--port", "-p" }), "PORT" }),
-		({ "nick", HAS_ARG, ({ "--nick", "-n", "--nickname" }), "NICK" })
+		({ "nick", HAS_ARG, ({ "--nick", "-n", "--nickname" }), "NICK" }),
+		({ "channel", HAS_ARG, ({ "--channel" }), "CHAN" })
 		})), mixed option)
 	{
 		switch(option[0])
@@ -31,10 +33,13 @@ int main(int argc, array(string) argv)
 			case "nick":
 				nick = option[1];
 				break;
+			case "channel":
+				channel = option[1];
+				break;
 		}
 	}
 
 	.IRCBot.IRCBot bot = .IRCBot.IRCBot();
-	return bot.init(server, port, nick);
+	return bot.init(server, port, nick, channel);
 }
 

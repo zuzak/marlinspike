@@ -12,6 +12,7 @@ Configuration is done via command line arguments or environment variables.
 |`--port`, `-p`               | `PORT`   | 6667             |
 |`--server`                   | `SERVER` | irc.freenode.net |
 |`--nick`, `-n`, `--nickname` | `NICK`   | Pikebot          |
+|`--channel`                  | `CHAN`   |                  |
 
 To decrease the likelihood of unconfigured bots colliding, a random number is
 appended to the default nickname.
