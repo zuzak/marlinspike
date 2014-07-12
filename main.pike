@@ -9,9 +9,6 @@ int main(int argc, array(string) argv)
 	foreach(find_all_options(argv, ({
 		({ "version", NO_ARG, ({ "-v", "--version" }) }),
 		({ "license", NO_ARG, ({ "--license", "--licence" }) }),
-		({ "server", MAY_HAVE_ARG, ({ "-s", "--server" }), "SERVER" }),
-		({ "port", MAY_HAVE_ARG, ({ "-p", "--port" }), "PORT" }),
-		({ "nick", MAY_HAVE_ARG, ({ "-n", "--nick", "--nickname" }), "NICK" })
 		})), mixed option)
 	{
 		switch(option[0])
@@ -22,15 +19,6 @@ int main(int argc, array(string) argv)
 			case "license":
 				.miscellany.output_license();
 				return 1;
-			case "server":
-				server = option[1];
-				break;
-			case "port":
-				port = option[1];
-				break;
-			case "nick":
-				nick = option[1];
-				break;
 		}
 	}
 
