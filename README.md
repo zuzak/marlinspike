@@ -28,20 +28,24 @@ The following commands, when issued via IRC, cause the bot to react.
 ### Basic commands
 #### Ping
 * *Usage:* `!ping`, `!botsnack`
+
 Cause the bot to respond with a simple message, to confirm that it's still alive.
 
 ### Source control
 #### Source
 * *Usage:* `!src`
-* Cause the bot to respond with a link to its source code.
+
+Cause the bot to respond with a link to its source code.
 
 #### Version
 * *Usage:* `!version`
 * *Aliases:* `!git`, `!commit`
+
 Cause the bot to respond with, as appropriate, its version number, git commit hash, and a link to the repository.
 
 ### Network utilities
 #### DNS
 * *Usage:* `!dns <hostname>`
 * *Aliases:* `!rdns`
+
 Cause the bot to look up DNS records and respond appropriately.
