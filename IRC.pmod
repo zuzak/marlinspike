@@ -3,13 +3,13 @@ class IRC {
 	string server;
 	string nick;
 	int port;
-	string channel; // TODO: more than one chan
+	array(string) channels;
 
-	int init(string s, int p, string n, string c) {
+	int init(string s, int p, string n, array(string) c) {
 		server = s;
 		nick = n;
 		port = p;
-		channel = c;
+		channels = c;
 		write("Connecting to %s...", server);
 		connect();
 		read(); // this won't return!
@@ -32,7 +32,7 @@ class IRC {
 				server = curr;
 				send(sprintf("USER %s 0 * :%s", nick, .miscellany.get_version() ));
 				send(sprintf("NICK %s\r", nick ));
-				if (channel) {
+				foreach(channels, string channel) {
 					send(sprintf("JOIN %s", channel));
 				}
 				break;
