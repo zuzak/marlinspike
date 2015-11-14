@@ -1,4 +1,5 @@
 #!/usr/bin/pike
+#pike 7.8
 import Getopt;
 
 int main(int argc, array(string) argv)
